@@ -59,6 +59,7 @@ namespace GameOfLife2._0_Alpha
         private void bSave_Click(object sender, EventArgs e)
         {
             ////
+            Hide();
         }
 
         private void bCancel_Click(object sender, EventArgs e)
