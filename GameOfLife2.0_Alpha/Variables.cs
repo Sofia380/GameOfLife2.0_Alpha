@@ -21,5 +21,7 @@ namespace GameOfLife2._0_Alpha
         public static int smallRowsData;
         public static bool[,] smallFieldData;
         public static bool[,] saveFiguresData;
+
+
     }
 }

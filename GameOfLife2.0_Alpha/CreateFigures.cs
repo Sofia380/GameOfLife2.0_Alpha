@@ -44,6 +44,7 @@ namespace GameOfLife2._0_Alpha
             graphics = Graphics.FromImage(pbFigure.Image);
             bStart.Enabled = false;
             bSave.Enabled = true;
+            tbResolution.Enabled = false;
         }
 
         private void tbSaveGame_TextChanged(object sender, EventArgs e)
@@ -63,6 +64,24 @@ namespace GameOfLife2._0_Alpha
 
         private void bCancel_Click(object sender, EventArgs e)
         {
+            if (bStart.Enabled == false)
+            {
+                DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.OK)
+                {
+                    for (int i = 0; i < cols; i++)
+                    {
+                        for (int j = 0; j < rows; j++)
+                        {
+                            field[i, j] = false;
+                        }
+                    }
+                    graphics.Clear(Color.Black);
+                    pbFigure.Refresh();
+                    bStart.Enabled = true;
+                    tbResolution.Enabled = true;
+                }
+            }
             Hide();
         }
 
@@ -81,7 +100,7 @@ namespace GameOfLife2._0_Alpha
                 if (validationPassed)
                 {
                     field[x, y] = true;
-                    graphics.FillRectangle(Brushes.Blue, x * resolution, y * resolution, resolution, resolution);
+                    graphics.FillRectangle(Brushes.Red, x * resolution, y * resolution, resolution, resolution);
                     pbFigure.Refresh();
                 }
             }
