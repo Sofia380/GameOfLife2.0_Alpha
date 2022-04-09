@@ -67,6 +67,8 @@ namespace GameOfLife2._0_Alpha
                 return;
             rows = pictureBox1.Height / resolution;
             cols = pictureBox1.Width / resolution;
+            Data.cols = cols;
+            Data.rows = rows;
             field = new bool[cols, rows];
             saveGame = new bool[cols, rows];
 
@@ -85,6 +87,7 @@ namespace GameOfLife2._0_Alpha
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             graphics = Graphics.FromImage(pictureBox1.Image);
             saveGame = field;
+            Data.saveGame = saveGame;
             timer1.Start();
         }
 
@@ -360,6 +363,7 @@ namespace GameOfLife2._0_Alpha
                     pictureBox1.Refresh();
                 }
                 saveGame = field;
+                Data.saveGame = saveGame;
             }
             if (e.Button == MouseButtons.Right)
             {
@@ -378,6 +382,7 @@ namespace GameOfLife2._0_Alpha
                     pictureBox1.Refresh();
                 }
                 saveGame = field;
+                Data.saveGame = saveGame;
             }
             if (e.Button == MouseButtons.Middle)
             {
@@ -396,6 +401,7 @@ namespace GameOfLife2._0_Alpha
                     pictureBox1.Refresh();
                 }
                 saveGame = field;
+                Data.saveGame = saveGame;
             }
         }
 

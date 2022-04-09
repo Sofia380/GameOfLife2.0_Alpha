@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace GameOfLife2._0_Alpha
 {
+
     public partial class EditorGame : Form
     {
         public EditorGame()
@@ -24,6 +25,11 @@ namespace GameOfLife2._0_Alpha
                 this.Visible = false;
             }
             base.OnFormClosing(e);
+        }
+
+        private void lbFiguresEditor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

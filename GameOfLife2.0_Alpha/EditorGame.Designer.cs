@@ -85,6 +85,7 @@ namespace GameOfLife2._0_Alpha
             this.lbFiguresEditor.Name = "lbFiguresEditor";
             this.lbFiguresEditor.Size = new System.Drawing.Size(549, 550);
             this.lbFiguresEditor.TabIndex = 0;
+            this.lbFiguresEditor.SelectedIndexChanged += new System.EventHandler(this.lbFiguresEditor_SelectedIndexChanged);
             // 
             // button3
             // 
@@ -148,29 +149,29 @@ namespace GameOfLife2._0_Alpha
             // редактироватьToolStripMenuItem
             // 
             this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
-            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.редактироватьToolStripMenuItem.Text = "Использовать";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
             // 
             // переименоватьToolStripMenuItem1
             // 
             this.переименоватьToolStripMenuItem1.Name = "переименоватьToolStripMenuItem1";
-            this.переименоватьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.переименоватьToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.переименоватьToolStripMenuItem1.Text = "Переименовать";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(158, 6);
             // 
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             // 
             // EditorGame
