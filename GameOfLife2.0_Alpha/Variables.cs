@@ -20,6 +20,7 @@ namespace GameOfLife2._0_Alpha
         public static int cols;
         public static int rows;
         public static bool[,] saveGame;
+        public static bool startCheckerData = false;
         // Figures
         public static int smallColsData;
         public static int smallRowsData;

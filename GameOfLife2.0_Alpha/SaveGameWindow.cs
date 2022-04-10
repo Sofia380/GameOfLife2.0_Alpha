@@ -64,13 +64,16 @@ namespace GameOfLife2._0_Alpha
                 Game_saving.resolution = Data.resolutionData;
                 Game_saving.Game_Zone = MatrixToArray();
                 Save_game.Insert(Game_saving);
+                tbSaveGame.Text = "";
+                Hide();
 
             }
         }
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-
+            tbSaveGame.Text = "";
+            Hide();
         }
     }
 }

@@ -57,6 +57,7 @@ namespace GameOfLife2._0_Alpha
 
         private void StartGame()
         {
+            Data.startCheckerData = true;
             bStop.Enabled = true;
             bReset.Enabled = true;
             bStart.Enabled = false;
@@ -245,6 +246,7 @@ namespace GameOfLife2._0_Alpha
                 bContinue.Enabled = false;
                 bReset.Enabled = false;
                 bStart.Enabled = true;
+                Data.startCheckerData = false;
             }
         }
 
