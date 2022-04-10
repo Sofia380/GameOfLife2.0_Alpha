@@ -17,16 +17,10 @@ namespace GameOfLife2._0_Alpha
         public EditorGame()
         {
             InitializeComponent();
-
+            synchronizeBD();
         }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-                this.Visible = false;
-            }
-            base.OnFormClosing(e);
+
+        private void synchronizeBD() {
             using (var db = new LiteDatabase(@"GameDB.db"))
             {
                 var Save_game = db.GetCollection<GameS>("save_games");
@@ -36,6 +30,17 @@ namespace GameOfLife2._0_Alpha
                 lbFiguresEditor.ValueMember = "Id";
                 lbFiguresEditor.SelectedIndexChanged += lbFiguresEditor_SelectedIndexChanged;
             }
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                this.Visible = false;
+            }
+            base.OnFormClosing(e);
+
+            synchronizeBD();
 
         }
 
@@ -44,8 +49,6 @@ namespace GameOfLife2._0_Alpha
                 var id = lbFiguresEditor.SelectedValue;
                 //// получаем весь выделенный объект
                 GameS Game = (GameS)lbFiguresEditor.SelectedItem;
-                //
-            
         }
 
         private void bCancel_Click(object sender, EventArgs e)
