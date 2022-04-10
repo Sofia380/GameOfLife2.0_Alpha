@@ -125,6 +125,7 @@ namespace GameOfLife2._0_Alpha
             this.bCancel.TabIndex = 4;
             this.bCancel.Text = "Использовать";
             this.bCancel.UseVisualStyleBackColor = false;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
             // pbFigure
             // 

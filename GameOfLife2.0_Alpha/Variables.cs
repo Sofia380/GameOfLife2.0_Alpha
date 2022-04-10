@@ -30,7 +30,7 @@ namespace GameOfLife2._0_Alpha
     }
     public class GameS
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public bool[] Game_Zone { get; set; }
         public int resolution { get; set; }
