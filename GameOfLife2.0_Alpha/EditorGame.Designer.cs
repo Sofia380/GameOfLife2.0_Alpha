@@ -42,6 +42,7 @@ namespace GameOfLife2._0_Alpha
             this.переименоватьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bSyncDB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +68,7 @@ namespace GameOfLife2._0_Alpha
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.splitContainer1.Panel2.Controls.Add(this.bSyncDB);
             this.splitContainer1.Panel2.Controls.Add(this.button3);
             this.splitContainer1.Panel2.Controls.Add(this.button2);
             this.splitContainer1.Panel2.Controls.Add(this.bCancel);
@@ -175,6 +177,20 @@ namespace GameOfLife2._0_Alpha
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             // 
+            // bSyncDB
+            // 
+            this.bSyncDB.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bSyncDB.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bSyncDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSyncDB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bSyncDB.Location = new System.Drawing.Point(35, 407);
+            this.bSyncDB.Name = "bSyncDB";
+            this.bSyncDB.Size = new System.Drawing.Size(159, 31);
+            this.bSyncDB.TabIndex = 8;
+            this.bSyncDB.Text = "Обновить базу";
+            this.bSyncDB.UseVisualStyleBackColor = false;
+            this.bSyncDB.Click += new System.EventHandler(this.bSyncDB_Click);
+            // 
             // EditorGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,5 +225,6 @@ namespace GameOfLife2._0_Alpha
         private System.Windows.Forms.ToolStripMenuItem переименоватьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.Button bSyncDB;
     }
 }

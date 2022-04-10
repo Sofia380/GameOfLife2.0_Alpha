@@ -55,5 +55,10 @@ namespace GameOfLife2._0_Alpha
         {
 
         }
+
+        private void bSyncDB_Click(object sender, EventArgs e)
+        {
+            synchronizeBD();
+        }
     }
 }
