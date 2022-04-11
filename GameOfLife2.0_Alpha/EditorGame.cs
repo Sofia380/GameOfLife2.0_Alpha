@@ -15,6 +15,7 @@ namespace GameOfLife2._0_Alpha
     public partial class EditorGame : Form
     {
         ChangeNameGame ChangeNameGame;
+        private GameS Game; 
 
         public EditorGame()
         {
@@ -51,7 +52,7 @@ namespace GameOfLife2._0_Alpha
         { 
                 var id = lbFiguresEditor.SelectedValue;
                 //// получаем весь выделенный объект
-                GameS Game = (GameS)lbFiguresEditor.SelectedItem;
+                Game = (GameS)lbFiguresEditor.SelectedItem;
         }
 
         private void EditorGame_Activated(object sender, EventArgs e)
@@ -59,9 +60,35 @@ namespace GameOfLife2._0_Alpha
             synchronizeBD();
         }
 
+        private bool[,] ArrayToMatrix(bool[] Arr, int cols, int rows)
+        {
+            var newfield = new bool[cols, rows];
+            int count = 0;
+            for (int i = 0; i < cols; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    newfield[i, j] = Arr[count];
+                    count++;
+                }
+            }
+            return newfield;
+        }
+
+        private void LoadGame(GameS game) 
+        {
+            if (game.col == 0 || game.row == 0)
+                return;
+            Data.cols = game.col;
+            Data.rows = game.row;
+            Data.resolutionData = game.resolution;
+            Data.fieldSaved = ArrayToMatrix(game.Game_Zone, game.col, game.row);
+        }
+
         private void использоватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // загружай в Data.fieldSaved и разкоменть код в GameField
+            LoadGame(Game);
             synchronizeBD();
             Hide();
         }
@@ -93,6 +120,7 @@ namespace GameOfLife2._0_Alpha
         private void bUse_Click(object sender, EventArgs e)
         {
             // загружай в Data.fieldSaved и разкоменть код в GameField
+            LoadGame(Game);
             synchronizeBD();
             Hide();
         }
