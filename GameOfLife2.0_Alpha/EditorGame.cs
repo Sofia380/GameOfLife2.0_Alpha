@@ -87,7 +87,7 @@ namespace GameOfLife2._0_Alpha
 
         private void использоватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Data.startSavedGame = true;
+            // загружай в Data.fieldSaved и разкоменть код в GameField
             LoadGame(Game);
             synchronizeBD();
             Hide();
@@ -119,7 +119,7 @@ namespace GameOfLife2._0_Alpha
 
         private void bUse_Click(object sender, EventArgs e)
         {
-            Data.startSavedGame = true;
+            // загружай в Data.fieldSaved и разкоменть код в GameField
             LoadGame(Game);
             synchronizeBD();
             Hide();
