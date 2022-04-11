@@ -12,6 +12,9 @@ namespace GameOfLife2._0_Alpha
 {
     public partial class GameField : Form
     {
+        ////////Доска заданий
+        //Сделать затычку на сохранение игры без запуска игры
+        //Сделать затычку на насе сохранения без имени
         AppHelp AppHelp;
         SaveGameWindow SaveGameWindow;
         EditorGame EditorGame;
