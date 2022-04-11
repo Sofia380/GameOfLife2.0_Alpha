@@ -29,6 +29,8 @@ namespace GameOfLife2._0_Alpha
         //
         public static bool[,] fieldSaved;
         public static bool startSavedGame = false;
+        public static string RenameGame;
+        public static bool CheckChangeNane = false;
 
 
     }

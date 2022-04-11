@@ -26,5 +26,11 @@ namespace GameOfLife2._0_Alpha
             }
             base.OnFormClosing(e);
         }
+
+        private void bSave_Click(object sender, EventArgs e)
+        {
+            Data.RenameGame = tbSaveGame.Text;
+            Data.CheckChangeNane = true;
+        }
     }
 }
