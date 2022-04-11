@@ -60,6 +60,8 @@ namespace GameOfLife2._0_Alpha
             synchronizeBD();
             if (Data.CheckChangeNane) {
                 UpdateName(Game, Data.RenameGame);
+                Data.CheckChangeNane = false;
+                synchronizeBD();
             }
         }
 
