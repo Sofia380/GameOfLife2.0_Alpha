@@ -32,7 +32,7 @@ namespace GameOfLife2._0_Alpha
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbFiguresEditor = new System.Windows.Forms.ListBox();
-            this.bDelet = new System.Windows.Forms.Button();
+            this.bDelete = new System.Windows.Forms.Button();
             this.bChangeName = new System.Windows.Forms.Button();
             this.bUse = new System.Windows.Forms.Button();
             this.pbFigure = new System.Windows.Forms.PictureBox();
@@ -66,7 +66,7 @@ namespace GameOfLife2._0_Alpha
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.splitContainer1.Panel2.Controls.Add(this.bDelet);
+            this.splitContainer1.Panel2.Controls.Add(this.bDelete);
             this.splitContainer1.Panel2.Controls.Add(this.bChangeName);
             this.splitContainer1.Panel2.Controls.Add(this.bUse);
             this.splitContainer1.Panel2.Controls.Add(this.pbFigure);
@@ -89,18 +89,19 @@ namespace GameOfLife2._0_Alpha
             this.lbFiguresEditor.SelectedIndexChanged += new System.EventHandler(this.lbFiguresEditor_SelectedIndexChanged);
             this.lbFiguresEditor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbFiguresEditor_MouseUp);
             // 
-            // bDelet
+            // bDelete
             // 
-            this.bDelet.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bDelet.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bDelet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bDelet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bDelet.Location = new System.Drawing.Point(35, 370);
-            this.bDelet.Name = "bDelet";
-            this.bDelet.Size = new System.Drawing.Size(159, 31);
-            this.bDelet.TabIndex = 7;
-            this.bDelet.Text = "Удалить";
-            this.bDelet.UseVisualStyleBackColor = false;
+            this.bDelete.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bDelete.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bDelete.Location = new System.Drawing.Point(35, 370);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(159, 31);
+            this.bDelete.TabIndex = 7;
+            this.bDelete.Text = "Удалить";
+            this.bDelete.UseVisualStyleBackColor = false;
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
             // bChangeName
             // 
@@ -206,7 +207,7 @@ namespace GameOfLife2._0_Alpha
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox lbFiguresEditor;
-        private System.Windows.Forms.Button bDelet;
+        private System.Windows.Forms.Button bDelete;
         private System.Windows.Forms.Button bChangeName;
         private System.Windows.Forms.Button bUse;
         private System.Windows.Forms.PictureBox pbFigure;

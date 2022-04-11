@@ -58,6 +58,9 @@ namespace GameOfLife2._0_Alpha
         private void EditorGame_Activated(object sender, EventArgs e)
         {
             synchronizeBD();
+            if (Data.CheckChangeNane) {
+                UpdateName(Game, Data.RenameGame);
+            }
         }
 
         private bool[,] ArrayToMatrix(bool[] Arr, int cols, int rows)
@@ -85,6 +88,25 @@ namespace GameOfLife2._0_Alpha
             Data.fieldSaved = ArrayToMatrix(game.Game_Zone, game.col, game.row);
         }
 
+        private void DelGame(GameS game)
+        {
+            using (var db = new LiteDatabase(@"GameDB.db"))
+            {
+                var Save_game = db.GetCollection<GameS>("save_games");
+                Save_game.Delete(x=>x.Id.Equals(game.Id));
+            }
+        }
+
+        private void UpdateName(GameS game, string name) 
+        {
+            using (var db = new LiteDatabase(@"GameDB.db"))
+            {
+                var Save_game = db.GetCollection<GameS>("save_games");
+                game.Name = name;
+                Save_game.Update(game);
+            }
+        }
+
         private void использоватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Data.startSavedGame = true;
@@ -101,7 +123,8 @@ namespace GameOfLife2._0_Alpha
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DelGame(Game);
+            synchronizeBD();
         }
 
         private void lbFiguresEditor_MouseUp(object sender, MouseEventArgs e)
@@ -129,6 +152,12 @@ namespace GameOfLife2._0_Alpha
         {
             this.ChangeNameGame.Show();
             this.ChangeNameGame.Activate();
+        }
+
+        private void bDelete_Click(object sender, EventArgs e)
+        {
+            DelGame(Game);
+            synchronizeBD();
         }
     }
 }

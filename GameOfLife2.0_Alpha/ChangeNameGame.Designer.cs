@@ -77,6 +77,7 @@ namespace GameOfLife2._0_Alpha
             this.bSave.TabIndex = 4;
             this.bSave.Text = "Применить";
             this.bSave.UseVisualStyleBackColor = false;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
             // ChangeNameGame
             // 
