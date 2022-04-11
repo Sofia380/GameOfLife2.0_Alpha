@@ -63,7 +63,6 @@ namespace GameOfLife2._0_Alpha
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.Controls.Add(this.lbFiguresEditor);
             // 
             // splitContainer1.Panel2
@@ -81,12 +80,14 @@ namespace GameOfLife2._0_Alpha
             // lbFiguresEditor
             // 
             this.lbFiguresEditor.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.lbFiguresEditor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbFiguresEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbFiguresEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbFiguresEditor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbFiguresEditor.FormattingEnabled = true;
+            this.lbFiguresEditor.ItemHeight = 24;
             this.lbFiguresEditor.Location = new System.Drawing.Point(0, 0);
             this.lbFiguresEditor.Name = "lbFiguresEditor";
-            this.lbFiguresEditor.Size = new System.Drawing.Size(549, 550);
+            this.lbFiguresEditor.Size = new System.Drawing.Size(566, 450);
             this.lbFiguresEditor.TabIndex = 0;
             this.lbFiguresEditor.SelectedIndexChanged += new System.EventHandler(this.lbFiguresEditor_SelectedIndexChanged);
             // 
@@ -165,43 +166,43 @@ namespace GameOfLife2._0_Alpha
             this.toolStripSeparator2,
             this.удалитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 104);
             // 
             // использоватьToolStripMenuItem
             // 
             this.использоватьToolStripMenuItem.Name = "использоватьToolStripMenuItem";
-            this.использоватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.использоватьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.использоватьToolStripMenuItem.Text = "Использовать";
             this.использоватьToolStripMenuItem.Click += new System.EventHandler(this.использоватьToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
             // 
             // редактироватьToolStripMenuItem
             // 
             this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
-            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.редактироватьToolStripMenuItem.Text = "Редактировать";
             this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
             // 
             // переименоватьToolStripMenuItem1
             // 
             this.переименоватьToolStripMenuItem1.Name = "переименоватьToolStripMenuItem1";
-            this.переименоватьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.переименоватьToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.переименоватьToolStripMenuItem1.Text = "Переименовать";
             this.переименоватьToolStripMenuItem1.Click += new System.EventHandler(this.переименоватьToolStripMenuItem1_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(158, 6);
             // 
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
@@ -215,6 +216,7 @@ namespace GameOfLife2._0_Alpha
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "EditorFigures";
             this.Text = "Фигуры";
+            this.Activated += new System.EventHandler(this.EditorFigures_Activated);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

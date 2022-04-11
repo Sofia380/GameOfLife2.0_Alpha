@@ -17,7 +17,6 @@ namespace GameOfLife2._0_Alpha
         EditorGame EditorGame;
         EditorFigures EditorFigures;
         CreateFigures CreateFigures;
-        ChangeNameGame ChangeNameGame;
         SmallEditorFigures SmallEditorFigures;
         Settings Settings;
 
@@ -49,7 +48,6 @@ namespace GameOfLife2._0_Alpha
             this.EditorGame = new EditorGame();
             this.EditorFigures = new EditorFigures();
             this.CreateFigures = new CreateFigures();
-            this.ChangeNameGame = new ChangeNameGame();
             this.SmallEditorFigures = new SmallEditorFigures();
             this.Settings = new Settings();
 
@@ -258,6 +256,7 @@ namespace GameOfLife2._0_Alpha
 
         private void bChooseSave_Click(object sender, EventArgs e)
         {
+
             this.EditorGame.Show();
             this.EditorGame.Activate();
         }

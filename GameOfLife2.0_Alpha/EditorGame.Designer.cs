@@ -32,17 +32,16 @@ namespace GameOfLife2._0_Alpha
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbFiguresEditor = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.bCancel = new System.Windows.Forms.Button();
+            this.bDelet = new System.Windows.Forms.Button();
+            this.bChangeName = new System.Windows.Forms.Button();
+            this.bUse = new System.Windows.Forms.Button();
             this.pbFigure = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.использоватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.переименоватьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bSyncDB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,16 +61,14 @@ namespace GameOfLife2._0_Alpha
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.Controls.Add(this.lbFiguresEditor);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.splitContainer1.Panel2.Controls.Add(this.bSyncDB);
-            this.splitContainer1.Panel2.Controls.Add(this.button3);
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.bCancel);
+            this.splitContainer1.Panel2.Controls.Add(this.bDelet);
+            this.splitContainer1.Panel2.Controls.Add(this.bChangeName);
+            this.splitContainer1.Panel2.Controls.Add(this.bUse);
             this.splitContainer1.Panel2.Controls.Add(this.pbFigure);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 566;
@@ -80,54 +77,58 @@ namespace GameOfLife2._0_Alpha
             // lbFiguresEditor
             // 
             this.lbFiguresEditor.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.lbFiguresEditor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbFiguresEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbFiguresEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbFiguresEditor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbFiguresEditor.FormattingEnabled = true;
+            this.lbFiguresEditor.ItemHeight = 24;
             this.lbFiguresEditor.Location = new System.Drawing.Point(0, 0);
             this.lbFiguresEditor.Name = "lbFiguresEditor";
-            this.lbFiguresEditor.Size = new System.Drawing.Size(549, 550);
+            this.lbFiguresEditor.Size = new System.Drawing.Size(566, 450);
             this.lbFiguresEditor.TabIndex = 0;
             this.lbFiguresEditor.SelectedIndexChanged += new System.EventHandler(this.lbFiguresEditor_SelectedIndexChanged);
+            this.lbFiguresEditor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbFiguresEditor_MouseUp);
             // 
-            // button3
+            // bDelet
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(35, 370);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 31);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = false;
+            this.bDelet.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bDelet.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bDelet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bDelet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bDelet.Location = new System.Drawing.Point(35, 370);
+            this.bDelet.Name = "bDelet";
+            this.bDelet.Size = new System.Drawing.Size(159, 31);
+            this.bDelet.TabIndex = 7;
+            this.bDelet.Text = "Удалить";
+            this.bDelet.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // bChangeName
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(35, 333);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 31);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Переименовать";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bChangeName.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bChangeName.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bChangeName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bChangeName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bChangeName.Location = new System.Drawing.Point(35, 333);
+            this.bChangeName.Name = "bChangeName";
+            this.bChangeName.Size = new System.Drawing.Size(159, 31);
+            this.bChangeName.TabIndex = 6;
+            this.bChangeName.Text = "Переименовать";
+            this.bChangeName.UseVisualStyleBackColor = false;
+            this.bChangeName.Click += new System.EventHandler(this.bChangeName_Click);
             // 
-            // bCancel
+            // bUse
             // 
-            this.bCancel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bCancel.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bCancel.Location = new System.Drawing.Point(35, 296);
-            this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(159, 31);
-            this.bCancel.TabIndex = 4;
-            this.bCancel.Text = "Использовать";
-            this.bCancel.UseVisualStyleBackColor = false;
-            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            this.bUse.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bUse.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bUse.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bUse.Location = new System.Drawing.Point(35, 296);
+            this.bUse.Name = "bUse";
+            this.bUse.Size = new System.Drawing.Size(159, 31);
+            this.bUse.TabIndex = 4;
+            this.bUse.Text = "Использовать";
+            this.bUse.UseVisualStyleBackColor = false;
+            this.bUse.Click += new System.EventHandler(this.bUse_Click);
             // 
             // pbFigure
             // 
@@ -141,7 +142,7 @@ namespace GameOfLife2._0_Alpha
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.редактироватьToolStripMenuItem,
+            this.использоватьToolStripMenuItem,
             this.toolStripSeparator1,
             this.переименоватьToolStripMenuItem1,
             this.toolStripSeparator2,
@@ -149,11 +150,12 @@ namespace GameOfLife2._0_Alpha
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(162, 82);
             // 
-            // редактироватьToolStripMenuItem
+            // использоватьToolStripMenuItem
             // 
-            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
-            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.редактироватьToolStripMenuItem.Text = "Использовать";
+            this.использоватьToolStripMenuItem.Name = "использоватьToolStripMenuItem";
+            this.использоватьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.использоватьToolStripMenuItem.Text = "Использовать";
+            this.использоватьToolStripMenuItem.Click += new System.EventHandler(this.использоватьToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -165,6 +167,7 @@ namespace GameOfLife2._0_Alpha
             this.переименоватьToolStripMenuItem1.Name = "переименоватьToolStripMenuItem1";
             this.переименоватьToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.переименоватьToolStripMenuItem1.Text = "Переименовать";
+            this.переименоватьToolStripMenuItem1.Click += new System.EventHandler(this.переименоватьToolStripMenuItem1_Click);
             // 
             // toolStripSeparator2
             // 
@@ -176,20 +179,7 @@ namespace GameOfLife2._0_Alpha
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
-            // 
-            // bSyncDB
-            // 
-            this.bSyncDB.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bSyncDB.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.bSyncDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSyncDB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bSyncDB.Location = new System.Drawing.Point(35, 407);
-            this.bSyncDB.Name = "bSyncDB";
-            this.bSyncDB.Size = new System.Drawing.Size(159, 31);
-            this.bSyncDB.TabIndex = 8;
-            this.bSyncDB.Text = "Обновить базу";
-            this.bSyncDB.UseVisualStyleBackColor = false;
-            this.bSyncDB.Click += new System.EventHandler(this.bSyncDB_Click);
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
             // EditorGame
             // 
@@ -201,6 +191,7 @@ namespace GameOfLife2._0_Alpha
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "EditorGame";
             this.Text = "Сохраненные игры";
+            this.Activated += new System.EventHandler(this.EditorGame_Activated);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -215,16 +206,15 @@ namespace GameOfLife2._0_Alpha
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox lbFiguresEditor;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button bCancel;
+        private System.Windows.Forms.Button bDelet;
+        private System.Windows.Forms.Button bChangeName;
+        private System.Windows.Forms.Button bUse;
         private System.Windows.Forms.PictureBox pbFigure;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem использоватьToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem переименоватьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
-        private System.Windows.Forms.Button bSyncDB;
     }
 }

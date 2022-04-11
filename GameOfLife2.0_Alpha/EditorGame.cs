@@ -14,10 +14,13 @@ namespace GameOfLife2._0_Alpha
 
     public partial class EditorGame : Form
     {
+        ChangeNameGame ChangeNameGame;
+
         public EditorGame()
         {
             InitializeComponent();
             synchronizeBD();
+            this.ChangeNameGame = new ChangeNameGame();
         }
 
         private void synchronizeBD() {
@@ -51,14 +54,53 @@ namespace GameOfLife2._0_Alpha
                 GameS Game = (GameS)lbFiguresEditor.SelectedItem;
         }
 
-        private void bCancel_Click(object sender, EventArgs e)
+        private void EditorGame_Activated(object sender, EventArgs e)
+        {
+            synchronizeBD();
+        }
+
+        private void использоватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // загружай в Data.fieldSaved и разкоменть код в GameField
+            synchronizeBD();
+            Hide();
+        }
+
+        private void переименоватьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.ChangeNameGame.Show();
+            this.ChangeNameGame.Activate();
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void bSyncDB_Click(object sender, EventArgs e)
+        private void lbFiguresEditor_MouseUp(object sender, MouseEventArgs e)
         {
+            if(e.Button == MouseButtons.Right)
+            {
+                int index = lbFiguresEditor.IndexFromPoint(e.Location);
+                if(index >= 0)
+                {
+                    lbFiguresEditor.SelectedIndex = index;
+                    contextMenuStrip1.Show(this.lbFiguresEditor, e.Location);
+                }
+            }
+        }
+
+        private void bUse_Click(object sender, EventArgs e)
+        {
+            // загружай в Data.fieldSaved и разкоменть код в GameField
             synchronizeBD();
+            Hide();
+        }
+
+        private void bChangeName_Click(object sender, EventArgs e)
+        {
+            this.ChangeNameGame.Show();
+            this.ChangeNameGame.Activate();
         }
     }
 }

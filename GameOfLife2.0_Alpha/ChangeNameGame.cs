@@ -16,5 +16,15 @@ namespace GameOfLife2._0_Alpha
         {
             InitializeComponent();
         }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                this.Visible = false;
+            }
+            base.OnFormClosing(e);
+        }
     }
 }

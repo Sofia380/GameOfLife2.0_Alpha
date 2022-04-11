@@ -12,6 +12,8 @@ namespace GameOfLife2._0_Alpha
 {
     public partial class EditorFigures : Form
     {
+        SmallEditorFigures SmallEditorFigures;
+
         public EditorFigures()
         {
             InitializeComponent();
@@ -68,6 +70,11 @@ namespace GameOfLife2._0_Alpha
         }
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditorFigures_Activated(object sender, EventArgs e)
         {
 
         }
