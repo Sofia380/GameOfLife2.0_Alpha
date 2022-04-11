@@ -28,6 +28,7 @@ namespace GameOfLife2._0_Alpha
         public static bool[,] saveFiguresData;
         //
         public static bool[,] fieldSaved;
+        public static bool startSavedGame = false;
 
 
     }
