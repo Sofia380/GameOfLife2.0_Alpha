@@ -54,6 +54,11 @@ namespace GameOfLife2._0_Alpha
 
         private void bSave_Click(object sender, EventArgs e)
         {
+            if (Data.checkedCratedField == false)
+            {
+                MessageBox.Show("Вы не создали игру!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (var db = new LiteDatabase(@"GameDB.db"))
             {
                 var Save_game = db.GetCollection<GameS>("save_games");

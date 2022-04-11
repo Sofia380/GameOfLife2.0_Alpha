@@ -73,6 +73,8 @@ namespace GameOfLife2._0_Alpha
 
             if (autoCheck == false)
                 return;
+            if (Data.startSavedGame == true)
+                return;
 
             Random random = new Random();
             for (int x = 0; x < cols; x++)
@@ -207,8 +209,24 @@ namespace GameOfLife2._0_Alpha
                 bContinue.Enabled = true;
                 bReset.Enabled = true;
             }
+            if (Data.startSavedGame == true)
+            {
+                if (timer1.Enabled)
+                    return;
+                rows = Data.rows;
+                cols = Data.cols;
+                resolution = Data.resolutionData;
+                field = new bool[cols, rows];
+                field = Data.fieldSaved;
+                bStop.Enabled = false;
+                bContinue.Enabled = true;
+                bReset.Enabled = true;
+            }
+            Data.startSavedGame = false;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             graphics = Graphics.FromImage(pictureBox1.Image);
+            GraphicBox();
+            Data.checkedCratedField = true;
         }
 
         private void bStop_Click(object sender, EventArgs e)
@@ -245,6 +263,7 @@ namespace GameOfLife2._0_Alpha
                 bReset.Enabled = false;
                 bStart.Enabled = true;
                 Data.startCheckerData = false;
+                Data.checkedCratedField = false;
             }
         }
 
