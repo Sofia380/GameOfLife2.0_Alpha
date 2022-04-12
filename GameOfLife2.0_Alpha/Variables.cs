@@ -24,6 +24,7 @@ namespace GameOfLife2._0_Alpha
         // Figures
         public static int smallColsData;
         public static int smallRowsData;
+        public static int smallResolution;
         public static bool[,] smallFieldData;
         public static bool[,] saveFiguresData;
         //
