@@ -43,4 +43,13 @@ namespace GameOfLife2._0_Alpha
         public int col { get; set; }
         public int row { get; set; }
     }
+    public class FigureS
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool[] FigureZone { get; set; }
+        public int resolution { get; set; }
+        public int col { get; set; }
+        public int row { get; set; }
+    }
 }

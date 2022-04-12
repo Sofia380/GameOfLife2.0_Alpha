@@ -1,4 +1,5 @@
 ﻿using System;
+using LiteDB;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,9 +58,38 @@ namespace GameOfLife2._0_Alpha
             StartCreate();
         }
 
+        private bool[] MatrixToArray()
+        {
+            var size = cols * rows;
+            var Arr = new bool[size];
+            int count = 0;
+            for (int i = 0; i < cols; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    Arr[count] = field[i, j];
+                    count++;
+
+                }
+            }
+            return Arr;
+        }
+
         private void bSave_Click(object sender, EventArgs e)
         {
-            ////
+            ////сохранение фигуры
+            using (var db = new LiteDatabase(@"GameDB.db"))
+            {
+                var Save_game = db.GetCollection<FigureS>("save_figure");
+                var Figure = new FigureS { };
+                Figure.Name = tbSaveGame.Text;
+                Figure.row = rows;
+                Figure.col = cols;
+                Figure.resolution = resolution;
+                Figure.FigureZone = MatrixToArray(); ;//доделать сохранение
+                Save_game.Insert(Figure);
+                tbSaveGame.Text = "";
+            }
             Hide();
         }
 
