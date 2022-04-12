@@ -29,8 +29,22 @@ namespace GameOfLife2._0_Alpha
 
         private void bSave_Click(object sender, EventArgs e)
         {
+            if(String.IsNullOrEmpty(tbSaveGame.Text) || String.IsNullOrWhiteSpace(tbSaveGame.Text))
+            {
+                MessageBox.Show("Вы не ввели имя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             Data.RenameGame = tbSaveGame.Text;
             Data.CheckChangeNane = true;
+            tbSaveGame.Text = "";
+            Hide();
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            tbSaveGame.Text = "";
+            Hide();
         }
     }
 }

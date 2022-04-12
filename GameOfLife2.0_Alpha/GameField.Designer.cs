@@ -208,7 +208,7 @@ namespace GameOfLife2._0_Alpha
             this.bCreateFigure.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bCreateFigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCreateFigure.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bCreateFigure.Location = new System.Drawing.Point(703, 8);
+            this.bCreateFigure.Location = new System.Drawing.Point(597, 8);
             this.bCreateFigure.Name = "bCreateFigure";
             this.bCreateFigure.Size = new System.Drawing.Size(100, 23);
             this.bCreateFigure.TabIndex = 8;
@@ -222,7 +222,7 @@ namespace GameOfLife2._0_Alpha
             this.bSaveGame.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bSaveGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bSaveGame.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bSaveGame.Location = new System.Drawing.Point(597, 8);
+            this.bSaveGame.Location = new System.Drawing.Point(703, 8);
             this.bSaveGame.Name = "bSaveGame";
             this.bSaveGame.Size = new System.Drawing.Size(100, 23);
             this.bSaveGame.TabIndex = 7;
