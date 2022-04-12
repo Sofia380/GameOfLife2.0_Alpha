@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,10 +35,11 @@ namespace GameOfLife2._0_Alpha
 
         private void StartEdit()
         {
-            //resolution = 
-            rows = pbFigure.Height / resolution;
-            cols = pbFigure.Width / resolution;
-            field = new bool[cols, rows];
+
+            resolution = Data.UpdateFigure.resolution;
+            rows = Data.UpdateFigure.row;
+            cols = Data.UpdateFigure.col;
+            field = ArrayToMatrix(Data.UpdateFigure.FigureZone, rows, cols);
             pbFigure.Image = new Bitmap(pbFigure.Width, pbFigure.Height);
             graphics = Graphics.FromImage(pbFigure.Image);
             bStart.Enabled = false;
@@ -56,10 +58,53 @@ namespace GameOfLife2._0_Alpha
             }
             StartEdit();
         }
+        private bool[,] ArrayToMatrix(bool[] Arr, int cols, int rows)
+        {
+            var newfield = new bool[cols, rows];
+            int count = 0;
+            for (int i = 0; i < cols; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    newfield[i, j] = Arr[count];
+                    count++;
+                }
+            }
+            return newfield;
+        }
+
+        private bool[] MatrixToArray()
+        {
+            var size = cols * rows;
+            var Arr = new bool[size];
+            int count = 0;
+            for (int i = 0; i < cols; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    Arr[count] = field[i, j];
+                    count++;
+
+                }
+            }
+            return Arr;
+        }
+
+        private void UpdateFigure(FigureS figure, string name)
+        {
+            using (var db = new LiteDatabase(@"GameDB.db"))
+            {
+                var Save_game = db.GetCollection<FigureS>("save_figure");
+                figure.Name = name;
+                figure.FigureZone = MatrixToArray();
+                Save_game.Update(figure);
+            }
+        }
 
         private void bSave_Click(object sender, EventArgs e)
         {
             //тут сохранять в бд
+            UpdateFigure(Data.UpdateFigure, tbSaveGame.Text);
             graphics.Clear(Color.Black);
             tbSaveGame.Enabled = true;
             bStart.Enabled = true;
@@ -70,7 +115,7 @@ namespace GameOfLife2._0_Alpha
 
         private void SmallEditorFigures_Enter(object sender, EventArgs e)
         {
-            //tbSaveGame.Text = (из бд имя передай)
+            tbSaveGame.Text = Data.UpdateFigure.Name;
         }
 
         private void bCansel_Click(object sender, EventArgs e)

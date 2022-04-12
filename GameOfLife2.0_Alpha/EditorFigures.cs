@@ -86,6 +86,7 @@ namespace GameOfLife2._0_Alpha
             var id = lbFiguresEditor.SelectedValue;
             //// получаем весь выделенный объект
             Figure = (FigureS)lbFiguresEditor.SelectedItem;
+            Data.UpdateFigure = Figure;
         }
 
         private void bUse_Click(object sender, EventArgs e)

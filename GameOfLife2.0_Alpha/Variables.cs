@@ -27,6 +27,7 @@ namespace GameOfLife2._0_Alpha
         public static int smallResolution;
         public static bool[,] smallFieldData;
         public static bool[,] saveFiguresData;
+        public static FigureS UpdateFigure;
         //
         public static bool[,] fieldSaved;
         public static bool startSavedGame = false;
