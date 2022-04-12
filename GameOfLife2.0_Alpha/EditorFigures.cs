@@ -20,6 +20,7 @@ namespace GameOfLife2._0_Alpha
         {
             InitializeComponent();
             synchronizeBD();
+            this.SmallEditorFigures = new SmallEditorFigures();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -96,12 +97,8 @@ namespace GameOfLife2._0_Alpha
 
         private void bEdit_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void bChangeName_Click(object sender, EventArgs e)
-        {
-
+            this.SmallEditorFigures.Show();
+            this.SmallEditorFigures.Activate();
         }
 
         private void bDelete_Click(object sender, EventArgs e)
@@ -119,7 +116,8 @@ namespace GameOfLife2._0_Alpha
 
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.SmallEditorFigures.Show();
+            this.SmallEditorFigures.Activate();
         }
 
         private void переименоватьToolStripMenuItem1_Click(object sender, EventArgs e)

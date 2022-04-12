@@ -59,7 +59,7 @@ namespace GameOfLife2._0_Alpha
 
         private void bSave_Click(object sender, EventArgs e)
         {
-            //
+            //тут сохранять в бд
             graphics.Clear(Color.Black);
             tbSaveGame.Enabled = true;
             bStart.Enabled = true;
@@ -70,7 +70,7 @@ namespace GameOfLife2._0_Alpha
 
         private void SmallEditorFigures_Enter(object sender, EventArgs e)
         {
-            //tbSaveGame.Text =
+            //tbSaveGame.Text = (из бд имя передай)
         }
 
         private void bCansel_Click(object sender, EventArgs e)

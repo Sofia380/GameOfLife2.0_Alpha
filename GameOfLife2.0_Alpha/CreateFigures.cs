@@ -94,7 +94,7 @@ namespace GameOfLife2._0_Alpha
                 Figure.row = rows;
                 Figure.col = cols;
                 Figure.resolution = resolution;
-                Figure.FigureZone = MatrixToArray(); ;//доделать сохранение
+                Figure.FigureZone = MatrixToArray(); ;
                 Save_game.Insert(Figure);
                 tbSaveGame.Text = "";
             }
