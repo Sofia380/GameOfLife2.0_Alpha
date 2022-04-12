@@ -55,7 +55,7 @@ namespace GameOfLife2._0_Alpha
                 Game = (GameS)lbFiguresEditor.SelectedItem;
         }
 
-        private void EditorGame_Activated(object sender, EventArgs e)
+        private void EditorGame_Activated(object sender, EventArgs e) // надо перенести в фигуры после синхронизации
         {
             synchronizeBD();
             if (Data.CheckChangeNane) {

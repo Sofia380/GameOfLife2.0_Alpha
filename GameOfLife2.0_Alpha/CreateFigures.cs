@@ -46,6 +46,9 @@ namespace GameOfLife2._0_Alpha
             bStart.Enabled = false;
             bSave.Enabled = true;
             tbResolution.Enabled = false;
+            tbSaveGame.Enabled = false;
+            graphics.Clear(Color.Black);
+            pbFigure.Refresh();
         }
 
         private void tbSaveGame_TextChanged(object sender, EventArgs e)
@@ -55,6 +58,11 @@ namespace GameOfLife2._0_Alpha
 
         private void bStart_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(tbSaveGame.Text) || String.IsNullOrWhiteSpace(tbSaveGame.Text))
+            {
+                MessageBox.Show("Вы не ввели имя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             StartCreate();
         }
 
@@ -90,6 +98,13 @@ namespace GameOfLife2._0_Alpha
                 Save_game.Insert(Figure);
                 tbSaveGame.Text = "";
             }
+            graphics.Clear(Color.Black);
+            tbSaveGame.Enabled = true;
+            tbResolution.Enabled = true;
+            bStart.Enabled = true;
+            bSave.Enabled = false;
+            tbResolution.Value = 10;
+            pbFigure.Refresh();
             Hide();
         }
 
@@ -113,6 +128,14 @@ namespace GameOfLife2._0_Alpha
                     tbResolution.Enabled = true;
                 }
             }
+            graphics.Clear(Color.Black);
+            pbFigure.Refresh();
+            tbSaveGame.Enabled = true;
+            tbResolution.Enabled = true;
+            bStart.Enabled = true;
+            bSave.Enabled = false;
+            tbResolution.Value = 10;
+            tbSaveGame.Text = "";
             Hide();
         }
 
