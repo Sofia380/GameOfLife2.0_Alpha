@@ -105,6 +105,7 @@ namespace GameOfLife2._0_Alpha
             this.pbFigure.Size = new System.Drawing.Size(227, 227);
             this.pbFigure.TabIndex = 19;
             this.pbFigure.TabStop = false;
+            this.pbFigure.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFigure_MouseMove_1);
             // 
             // SmallEditorFigures
             // 
@@ -122,7 +123,7 @@ namespace GameOfLife2._0_Alpha
             this.MinimumSize = new System.Drawing.Size(506, 290);
             this.Name = "SmallEditorFigures";
             this.Text = "Редактировать фигуру";
-            this.Enter += new System.EventHandler(this.SmallEditorFigures_Enter);
+            this.Activated += new System.EventHandler(this.SmallEditorFigures_Activated_1);
             ((System.ComponentModel.ISupportInitialize)(this.pbFigure)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

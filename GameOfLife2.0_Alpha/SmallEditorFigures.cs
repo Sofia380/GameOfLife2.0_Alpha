@@ -21,6 +21,7 @@ namespace GameOfLife2._0_Alpha
         public SmallEditorFigures()
         {
             InitializeComponent();
+            bSave.Enabled = false;
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -35,18 +36,9 @@ namespace GameOfLife2._0_Alpha
 
         private void StartEdit()
         {
-
-            resolution = Data.UpdateFigure.resolution;
-            rows = Data.UpdateFigure.row;
-            cols = Data.UpdateFigure.col;
-            field = ArrayToMatrix(Data.UpdateFigure.FigureZone, rows, cols);
-            pbFigure.Image = new Bitmap(pbFigure.Width, pbFigure.Height);
-            graphics = Graphics.FromImage(pbFigure.Image);
             bStart.Enabled = false;
             bSave.Enabled = true;
             tbSaveGame.Enabled = false;
-            graphics.Clear(Color.Black);
-            pbFigure.Refresh();
         }
 
         private void bStart_Click(object sender, EventArgs e)
@@ -56,6 +48,7 @@ namespace GameOfLife2._0_Alpha
                 MessageBox.Show("Вы не ввели имя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            GraphicBox();
             StartEdit();
         }
         private bool[,] ArrayToMatrix(bool[] Arr, int cols, int rows)
@@ -98,12 +91,12 @@ namespace GameOfLife2._0_Alpha
                 figure.Name = name;
                 figure.FigureZone = MatrixToArray();
                 Save_game.Update(figure);
+                Data.CheckChangeFigures = true;
             }
         }
 
         private void bSave_Click(object sender, EventArgs e)
         {
-            //тут сохранять в бд
             UpdateFigure(Data.UpdateFigure, tbSaveGame.Text);
             graphics.Clear(Color.Black);
             tbSaveGame.Enabled = true;
@@ -111,11 +104,6 @@ namespace GameOfLife2._0_Alpha
             bSave.Enabled = false;
             pbFigure.Refresh();
             Hide();
-        }
-
-        private void SmallEditorFigures_Enter(object sender, EventArgs e)
-        {
-            tbSaveGame.Text = Data.UpdateFigure.Name;
         }
 
         private void bCansel_Click(object sender, EventArgs e)
@@ -134,7 +122,6 @@ namespace GameOfLife2._0_Alpha
                     }
                     graphics.Clear(Color.Black);
                     pbFigure.Refresh();
-                    bStart.Enabled = true;
                 }
             }
             graphics.Clear(Color.Black);
@@ -145,7 +132,8 @@ namespace GameOfLife2._0_Alpha
             tbSaveGame.Text = "";
             Hide();
         }
-        private void pbFigure_MouseMove(object sender, MouseEventArgs e)
+
+        private void pbFigure_MouseMove_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -182,9 +170,36 @@ namespace GameOfLife2._0_Alpha
                 }
             }
         }
+
         private bool ValidateMousePosition(int x, int y)
         {
             return x >= 0 && y >= 0 && x < cols && y < rows;
+        }
+
+        private void SmallEditorFigures_Activated_1(object sender, EventArgs e)
+        {
+            tbSaveGame.Text = Data.UpdateFigure.Name;
+
+            resolution = Data.UpdateFigure.resolution;
+            rows = Data.UpdateFigure.row;
+            cols = Data.UpdateFigure.col;
+            field = new bool[cols, rows];
+            field = ArrayToMatrix(Data.UpdateFigure.FigureZone, rows, cols);
+            pbFigure.Image = new Bitmap(pbFigure.Width, pbFigure.Height);
+            graphics = Graphics.FromImage(pbFigure.Image);
+            GraphicBox();
+        }
+
+        private void GraphicBox()
+        {
+            for (int i = 0; i < cols; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    if (field[i, j])
+                        graphics.FillRectangle(Brushes.Blue, i * resolution, j * resolution, resolution, resolution);
+                }
+            }
         }
     }
 }

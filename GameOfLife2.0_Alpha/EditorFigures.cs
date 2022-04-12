@@ -134,7 +134,12 @@ namespace GameOfLife2._0_Alpha
 
         private void EditorFigures_Activated(object sender, EventArgs e)
         {
-
+            synchronizeBD();
+            if (Data.CheckChangeFigures)
+            {
+                Data.CheckChangeFigures = false;
+                synchronizeBD();
+            }
         }
     }
 }

@@ -51,10 +51,6 @@ namespace GameOfLife2._0_Alpha
             pbFigure.Refresh();
         }
 
-        private void tbSaveGame_TextChanged(object sender, EventArgs e)
-        {
-            ////
-        }
 
         private void bStart_Click(object sender, EventArgs e)
         {

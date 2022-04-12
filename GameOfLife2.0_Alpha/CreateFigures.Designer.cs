@@ -79,7 +79,6 @@ namespace GameOfLife2._0_Alpha
             this.tbSaveGame.Name = "tbSaveGame";
             this.tbSaveGame.Size = new System.Drawing.Size(223, 20);
             this.tbSaveGame.TabIndex = 14;
-            this.tbSaveGame.TextChanged += new System.EventHandler(this.tbSaveGame_TextChanged);
             // 
             // label2
             // 

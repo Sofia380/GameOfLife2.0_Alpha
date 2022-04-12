@@ -29,11 +29,6 @@ namespace GameOfLife2._0_Alpha
             base.OnFormClosing(e);
         }
 
-        private void tbSaveGame_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private bool[] MatrixToArray()
         {
             var size = Data.cols * Data.rows;
@@ -54,6 +49,16 @@ namespace GameOfLife2._0_Alpha
 
         private void bSave_Click(object sender, EventArgs e)
         {
+            if(Data.startCheckerData == false)
+            {
+                MessageBox.Show("Прежде чем сохранить, начните игру", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (String.IsNullOrEmpty(tbSaveGame.Text) || String.IsNullOrWhiteSpace(tbSaveGame.Text))
+            {
+                MessageBox.Show("Вы не ввели имя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (var db = new LiteDatabase(@"GameDB.db"))
             {
                 var Save_game = db.GetCollection<GameS>("save_games");
@@ -66,14 +71,17 @@ namespace GameOfLife2._0_Alpha
                 Save_game.Insert(Game_saving);
                 tbSaveGame.Text = "";
                 Hide();
-
             }
         }
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-            tbSaveGame.Text = "";
-            Hide();
+            DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.OK)
+            {
+                tbSaveGame.Text = "";
+                Hide();
+            }
         }
     }
 }
