@@ -29,6 +29,7 @@ namespace GameOfLife2._0_Alpha
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeNameGame));
             this.bCancel = new System.Windows.Forms.Button();
             this.tbSaveGame = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -90,6 +91,7 @@ namespace GameOfLife2._0_Alpha
             this.Controls.Add(this.tbSaveGame);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bSave);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(268, 161);
             this.MinimumSize = new System.Drawing.Size(268, 161);
             this.Name = "ChangeNameGame";

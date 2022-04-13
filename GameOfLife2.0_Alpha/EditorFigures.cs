@@ -16,6 +16,11 @@ namespace GameOfLife2._0_Alpha
         SmallEditorFigures SmallEditorFigures;
         private FigureS Figure;
 
+        public int rows, cols;
+        public int resolution;
+        public bool[,] field;
+        private Graphics graphics;
+
         public EditorFigures()
         {
             InitializeComponent();
@@ -87,6 +92,7 @@ namespace GameOfLife2._0_Alpha
             //// получаем весь выделенный объект
             Figure = (FigureS)lbFiguresEditor.SelectedItem;
             Data.UpdateFigure = Figure;
+            DrawIcon();
         }
 
         private void bUse_Click(object sender, EventArgs e)
@@ -139,6 +145,29 @@ namespace GameOfLife2._0_Alpha
             {
                 Data.CheckChangeFigures = false;
                 synchronizeBD();
+            }
+        }
+
+        private void DrawIcon()
+        {
+            resolution = Data.UpdateFigure.resolution;
+            rows = Data.UpdateFigure.row;
+            cols = Data.UpdateFigure.col;
+            field = new bool[cols, rows];
+            field = ArrayToMatrix(Data.UpdateFigure.FigureZone, rows, cols);
+            pbFigure.Image = new Bitmap(pbFigure.Width, pbFigure.Height);
+            graphics = Graphics.FromImage(pbFigure.Image);
+            GraphicBox();
+        }
+        private void GraphicBox()
+        {
+            for (int i = 0; i < cols; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    if (field[i, j])
+                        graphics.FillRectangle(Brushes.Red, i * resolution, j * resolution, resolution, resolution);
+                }
             }
         }
     }

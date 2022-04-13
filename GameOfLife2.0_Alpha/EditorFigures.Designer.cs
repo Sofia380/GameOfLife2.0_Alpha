@@ -30,6 +30,7 @@ namespace GameOfLife2._0_Alpha
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorFigures));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbFiguresEditor = new System.Windows.Forms.ListBox();
             this.bDelete = new System.Windows.Forms.Button();
@@ -187,6 +188,7 @@ namespace GameOfLife2._0_Alpha
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(816, 489);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "EditorFigures";

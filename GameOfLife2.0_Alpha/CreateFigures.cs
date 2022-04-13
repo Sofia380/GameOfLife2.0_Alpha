@@ -124,6 +124,8 @@ namespace GameOfLife2._0_Alpha
                     tbResolution.Enabled = true;
                 }
             }
+            pbFigure.Image = new Bitmap(pbFigure.Width, pbFigure.Height);
+            graphics = Graphics.FromImage(pbFigure.Image);
             graphics.Clear(Color.Black);
             pbFigure.Refresh();
             tbSaveGame.Enabled = true;
