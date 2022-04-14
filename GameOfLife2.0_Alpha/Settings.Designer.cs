@@ -29,7 +29,6 @@ namespace GameOfLife2._0_Alpha
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.rbDraw = new System.Windows.Forms.RadioButton();
             this.rbAuto = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -168,7 +167,6 @@ namespace GameOfLife2._0_Alpha
             this.Controls.Add(this.tbDensity);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbResolution);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(449, 199);
             this.MinimumSize = new System.Drawing.Size(449, 199);
             this.Name = "Settings";
