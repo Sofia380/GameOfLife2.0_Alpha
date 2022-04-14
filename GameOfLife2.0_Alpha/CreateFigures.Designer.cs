@@ -29,6 +29,7 @@ namespace GameOfLife2._0_Alpha
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateFigures));
             this.pbFigure = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbResolution = new System.Windows.Forms.TrackBar();
@@ -79,7 +80,6 @@ namespace GameOfLife2._0_Alpha
             this.tbSaveGame.Name = "tbSaveGame";
             this.tbSaveGame.Size = new System.Drawing.Size(223, 20);
             this.tbSaveGame.TabIndex = 14;
-            this.tbSaveGame.TextChanged += new System.EventHandler(this.tbSaveGame_TextChanged);
             // 
             // label2
             // 
@@ -147,6 +147,7 @@ namespace GameOfLife2._0_Alpha
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbResolution);
             this.Controls.Add(this.pbFigure);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(506, 290);
             this.MinimumSize = new System.Drawing.Size(506, 290);
             this.Name = "CreateFigures";

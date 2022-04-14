@@ -29,53 +29,57 @@ namespace GameOfLife2._0_Alpha
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SmallEditorFigures));
+            this.bCansel = new System.Windows.Forms.Button();
+            this.bSave = new System.Windows.Forms.Button();
+            this.bStart = new System.Windows.Forms.Button();
             this.tbSaveGame = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pbFigure = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbFigure)).BeginInit();
             this.SuspendLayout();
             // 
-            // button2
+            // bCansel
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(365, 169);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 23);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bCansel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bCansel.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bCansel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bCansel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bCansel.Location = new System.Drawing.Point(365, 169);
+            this.bCansel.Name = "bCansel";
+            this.bCansel.Size = new System.Drawing.Size(116, 23);
+            this.bCansel.TabIndex = 26;
+            this.bCansel.Text = "Отмена";
+            this.bCansel.UseVisualStyleBackColor = false;
+            this.bCansel.Click += new System.EventHandler(this.bCansel_Click);
             // 
-            // button1
+            // bSave
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(243, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 23);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bSave.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bSave.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bSave.Location = new System.Drawing.Point(243, 169);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(116, 23);
+            this.bSave.TabIndex = 25;
+            this.bSave.Text = "Сохранить";
+            this.bSave.UseVisualStyleBackColor = false;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
-            // button6
+            // bStart
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.Location = new System.Drawing.Point(243, 112);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(96, 23);
-            this.button6.TabIndex = 24;
-            this.button6.Text = "Начать";
-            this.button6.UseVisualStyleBackColor = false;
+            this.bStart.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bStart.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bStart.Location = new System.Drawing.Point(243, 112);
+            this.bStart.Name = "bStart";
+            this.bStart.Size = new System.Drawing.Size(96, 23);
+            this.bStart.TabIndex = 24;
+            this.bStart.Text = "Начать";
+            this.bStart.UseVisualStyleBackColor = false;
+            this.bStart.Click += new System.EventHandler(this.bStart_Click);
             // 
             // tbSaveGame
             // 
@@ -102,6 +106,7 @@ namespace GameOfLife2._0_Alpha
             this.pbFigure.Size = new System.Drawing.Size(227, 227);
             this.pbFigure.TabIndex = 19;
             this.pbFigure.TabStop = false;
+            this.pbFigure.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbFigure_MouseMove_1);
             // 
             // SmallEditorFigures
             // 
@@ -109,16 +114,18 @@ namespace GameOfLife2._0_Alpha
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(490, 251);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.bCansel);
+            this.Controls.Add(this.bSave);
+            this.Controls.Add(this.bStart);
             this.Controls.Add(this.tbSaveGame);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pbFigure);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(506, 290);
             this.MinimumSize = new System.Drawing.Size(506, 290);
             this.Name = "SmallEditorFigures";
             this.Text = "Редактировать фигуру";
+            this.Activated += new System.EventHandler(this.SmallEditorFigures_Activated_1);
             ((System.ComponentModel.ISupportInitialize)(this.pbFigure)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -127,9 +134,9 @@ namespace GameOfLife2._0_Alpha
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button bCansel;
+        private System.Windows.Forms.Button bSave;
+        private System.Windows.Forms.Button bStart;
         private System.Windows.Forms.TextBox tbSaveGame;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbFigure;
