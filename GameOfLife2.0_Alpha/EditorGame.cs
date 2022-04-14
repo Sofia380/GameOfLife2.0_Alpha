@@ -125,12 +125,8 @@ namespace GameOfLife2._0_Alpha
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.OK)
-            {
-                DelGame(Game);
-                synchronizeBD();
-            }
+            DelGame(Game);
+            synchronizeBD();
         }
 
         private void lbFiguresEditor_MouseUp(object sender, MouseEventArgs e)
@@ -162,12 +158,8 @@ namespace GameOfLife2._0_Alpha
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.OK)
-            {
-                DelGame(Game);
-                synchronizeBD();
-            }
+            DelGame(Game);
+            synchronizeBD();
         }
     }
 }
