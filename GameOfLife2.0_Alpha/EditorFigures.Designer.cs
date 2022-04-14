@@ -88,6 +88,7 @@ namespace GameOfLife2._0_Alpha
             this.lbFiguresEditor.Size = new System.Drawing.Size(566, 450);
             this.lbFiguresEditor.TabIndex = 0;
             this.lbFiguresEditor.SelectedIndexChanged += new System.EventHandler(this.lbFiguresEditor_SelectedIndexChanged);
+            this.lbFiguresEditor.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbFiguresEditor_MouseUp);
             // 
             // bDelete
             // 

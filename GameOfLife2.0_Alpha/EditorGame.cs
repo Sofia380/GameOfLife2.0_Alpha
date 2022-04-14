@@ -15,7 +15,8 @@ namespace GameOfLife2._0_Alpha
     public partial class EditorGame : Form
     {
         ChangeNameGame ChangeNameGame;
-        private GameS Game; 
+        private GameS Game;
+        private int indexItem;
 
         public EditorGame()
         {
@@ -51,11 +52,10 @@ namespace GameOfLife2._0_Alpha
         private void lbFiguresEditor_SelectedIndexChanged(object sender, EventArgs e)
         { 
                 var id = lbFiguresEditor.SelectedValue;
-                //// получаем весь выделенный объект
                 Game = (GameS)lbFiguresEditor.SelectedItem;
         }
 
-        private void EditorGame_Activated(object sender, EventArgs e) // надо перенести в фигуры после синхронизации
+        private void EditorGame_Activated(object sender, EventArgs e)
         {
             synchronizeBD();
             if (Data.CheckChangeNane) {
@@ -125,8 +125,13 @@ namespace GameOfLife2._0_Alpha
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DelGame(Game);
-            synchronizeBD();
+            DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.OK)
+            {
+                lbFiguresEditor.SelectedIndex = indexItem;
+                DelGame(Game);
+                synchronizeBD();
+            }
         }
 
         private void lbFiguresEditor_MouseUp(object sender, MouseEventArgs e)
@@ -137,6 +142,7 @@ namespace GameOfLife2._0_Alpha
                 if(index >= 0)
                 {
                     lbFiguresEditor.SelectedIndex = index;
+                    indexItem = index;
                     contextMenuStrip1.Show(this.lbFiguresEditor, e.Location);
                 }
             }
@@ -158,8 +164,13 @@ namespace GameOfLife2._0_Alpha
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            DelGame(Game);
-            synchronizeBD();
+            DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.OK)
+            {
+                lbFiguresEditor.SelectedIndex = indexItem;
+                DelGame(Game);
+                synchronizeBD();
+            }
         }
     }
 }

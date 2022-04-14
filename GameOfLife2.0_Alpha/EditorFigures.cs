@@ -20,6 +20,7 @@ namespace GameOfLife2._0_Alpha
         public int resolution;
         public bool[,] field;
         private Graphics graphics;
+        private int indexItem;
 
         public EditorFigures()
         {
@@ -110,8 +111,13 @@ namespace GameOfLife2._0_Alpha
 
         private void bDelete_Click(object sender, EventArgs e)
         {
-            DelFigure(Figure);
-            synchronizeBD();
+            DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.OK)
+            {
+                lbFiguresEditor.SelectedIndex = indexItem;
+                DelFigure(Figure);
+                synchronizeBD();
+            }
         }
 
         private void использоватьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,15 +133,15 @@ namespace GameOfLife2._0_Alpha
             this.SmallEditorFigures.Activate();
         }
 
-        private void переименоватьToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DelFigure(Figure);
-            synchronizeBD();
+            DialogResult result = MessageBox.Show("Вы уверены?", "Внимание", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.OK)
+            {
+                lbFiguresEditor.SelectedIndex = indexItem;
+                DelFigure(Figure);
+                synchronizeBD();
+            }
         }
 
         private void EditorFigures_Activated(object sender, EventArgs e)
@@ -159,6 +165,21 @@ namespace GameOfLife2._0_Alpha
             graphics = Graphics.FromImage(pbFigure.Image);
             GraphicBox();
         }
+
+        private void lbFiguresEditor_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int index = lbFiguresEditor.IndexFromPoint(e.Location);
+                if (index >= 0)
+                {
+                    lbFiguresEditor.SelectedIndex = index;
+                    indexItem = index;
+                    contextMenuStrip1.Show(this.lbFiguresEditor, e.Location);
+                }
+            }
+        }
+
         private void GraphicBox()
         {
             for (int i = 0; i < cols; i++)
