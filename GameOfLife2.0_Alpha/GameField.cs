@@ -12,20 +12,12 @@ namespace GameOfLife2._0_Alpha
 {
     public partial class GameField : Form
     {
-        ////////Доска заданий
-        //Сделать затычку на сохранение игры без запуска игры
-        //Сделать затычку на насе сохранения без имени
         AppHelp AppHelp;
         SaveGameWindow SaveGameWindow;
         EditorGame EditorGame;
         EditorFigures EditorFigures;
         CreateFigures CreateFigures;
-        SmallEditorFigures SmallEditorFigures;
         Settings Settings;
-
-        public int smallCols;
-        public int smallRows;
-        public bool[,] smallFild;
 
         public int resolution;
         public int density;
@@ -33,6 +25,8 @@ namespace GameOfLife2._0_Alpha
         public int rows, cols;
         public bool[,] field;
         public bool[,] saveGame;
+        public bool[,] saveStopfield;
+        public bool checkerStop = false;
         private Graphics graphics;
 
         public GameField()
@@ -51,7 +45,6 @@ namespace GameOfLife2._0_Alpha
             this.EditorGame = new EditorGame();
             this.EditorFigures = new EditorFigures();
             this.CreateFigures = new CreateFigures();
-            this.SmallEditorFigures = new SmallEditorFigures();
             this.Settings = new Settings();
 
         }
@@ -59,6 +52,7 @@ namespace GameOfLife2._0_Alpha
         private void StartGame()
         {
             Data.startCheckerData = true;
+            checkerStop = true;
             bStop.Enabled = true;
             bReset.Enabled = true;
             bStart.Enabled = false;
@@ -131,6 +125,7 @@ namespace GameOfLife2._0_Alpha
             graphics.Clear(Color.Black);
 
             var newFlield = new bool[cols, rows];
+            saveStopfield = new bool[cols, rows];
 
             for (int x = 0; x < cols; x++)
             {
@@ -150,6 +145,7 @@ namespace GameOfLife2._0_Alpha
                         graphics.FillRectangle(Brushes.Crimson, x * resolution, y * resolution, resolution, resolution);
                 }
             }
+            saveStopfield = field;
             field = newFlield;
             pictureBox1.Refresh();
         }
@@ -208,6 +204,7 @@ namespace GameOfLife2._0_Alpha
                 rows = pictureBox1.Height / resolution;
                 cols = pictureBox1.Width / resolution;
                 field = new bool[cols, rows];
+                checkerStop = false;
                 bStop.Enabled = false;
                 bContinue.Enabled = true;
                 bReset.Enabled = true;
@@ -221,6 +218,7 @@ namespace GameOfLife2._0_Alpha
                 resolution = Data.resolutionData;
                 field = new bool[cols, rows];
                 field = Data.fieldSaved;
+                checkerStop = false;
                 bStop.Enabled = false;
                 bContinue.Enabled = true;
                 bReset.Enabled = true;
@@ -233,11 +231,13 @@ namespace GameOfLife2._0_Alpha
 
         private void bStop_Click(object sender, EventArgs e)
         {
+            checkerStop = true;
             StopGame();
         }
 
         private void bContinue_Click(object sender, EventArgs e)
         {
+            checkerStop = true;
             timer1.Start();
             bContinue.Enabled = false;
             bStart.Enabled = false;
@@ -446,32 +446,61 @@ namespace GameOfLife2._0_Alpha
         private void PasteProcessing(int x, int y)
         {
             int x1 = x, y1 = y, countx1 = 0, county1 = 0;
-            if ((x1 + smallCols) <= cols && (y1 + smallRows) <= rows)
+            if ((x1 + Data.smallColsData) <= cols && (y1 + Data.smallRowsData) <= rows)
             {
-                for (int i = 0; i < smallCols; i++)
+                for (int i = 0; i < Data.smallColsData; i++)
                 {
                     y1 = y;
-                    for (int j = 0; j < smallRows; j++)
+                    for (int j = 0; j < Data.smallRowsData; j++)
                     {
-                        if (field[x1, y1] || smallFild[i, j])
-                            field[x1, y1] = true;
+                        if (checkerStop)
+                            if (saveStopfield[x1, y1] || Data.saveFiguresData[i, j])
+                                saveStopfield[x1, y1] = true;
+                        if(checkerStop == false)
+                            if (field[x1, y1] || Data.saveFiguresData[i, j])
+                                field[x1, y1] = true;
 
                         y1 += 1;
-                        if (county1 == smallRows)
+                        if (county1 == Data.smallRowsData)
                         {
                             y1 = y;
                             county1 = 0;
                         }
                     }
                     x1 += 1;
-                    if (countx1 == smallCols)
+                    if (countx1 == Data.smallColsData)
                     {
                         x1 = x;
                         countx1 = 0;
                     }
                 }
             }
+            if (checkerStop)
+                field = saveStopfield;
             pictureBox1.Refresh();
+        }
+
+        private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (timer1.Enabled)
+                return;
+
+            if (bStart.Enabled == true)
+            {
+                MessageBox.Show("Начните игру!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var x = e.Location.X / resolution;
+            var y = e.Location.Y / resolution;
+            var validationPassed = ValidateMousePosition(x, y);
+            if (validationPassed)
+            {
+                PasteProcessing(x, y);
+                GraphicBox();
+                pictureBox1.Refresh();
+            }
+            saveGame = field;
+            Data.saveGame = saveGame;
         }
 
         private void SetWhiteColor(ToolStripMenuItem item)

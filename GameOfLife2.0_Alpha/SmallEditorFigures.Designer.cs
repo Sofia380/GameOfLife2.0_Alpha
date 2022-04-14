@@ -29,6 +29,7 @@ namespace GameOfLife2._0_Alpha
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SmallEditorFigures));
             this.bCansel = new System.Windows.Forms.Button();
             this.bSave = new System.Windows.Forms.Button();
             this.bStart = new System.Windows.Forms.Button();
@@ -119,6 +120,7 @@ namespace GameOfLife2._0_Alpha
             this.Controls.Add(this.tbSaveGame);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pbFigure);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(506, 290);
             this.MinimumSize = new System.Drawing.Size(506, 290);
             this.Name = "SmallEditorFigures";
